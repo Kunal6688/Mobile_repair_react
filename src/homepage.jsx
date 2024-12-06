@@ -17,7 +17,7 @@ import Android from './assets/android.png'
 import Tablet from './assets/tablet.png'
 
 
-function App() {
+function Homepage() {
   const [count, setCount] = useState(0)
 
   return (
@@ -92,4 +92,4 @@ function App() {
   )
 }
 
-export default App
+export default Homepage;
