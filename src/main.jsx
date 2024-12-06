@@ -30,7 +30,11 @@ const router = createBrowserRouter([
     path:"FAQ",
     element:<FAQ/>
   }
-]);
+],
+{
+  basename:"/MobileRepair",
+}
+);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
