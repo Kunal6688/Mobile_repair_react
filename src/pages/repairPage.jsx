@@ -8,6 +8,7 @@ import Ipad from '../assets/ipad 2.png'
 import Android from '../assets/android 2.png'
 import Tablet from '../assets/tablet 2.png'
 import DeviceRepair from '../assets/Device-repair.png'
+import RepairPage2 from "./repairPage2";
 
 function RepairPage() {
     return ( 

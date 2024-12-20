@@ -4,6 +4,7 @@ import './index.css'
 import {createBrowserRouter ,RouterProvider} from 'react-router-dom'
 import Homepage from './homepage.jsx'
 import RepairPage from './pages/repairPage.jsx'
+import RepairPage2 from './pages/repairPage2.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import ValuePage from './pages/valuePage.jsx'
 import FAQ from './pages/faq.jsx'
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path:"RepairPage",
     element:<RepairPage/>
+  },
+  {
+    path:"RepairPage2",
+    element:<RepairPage2/>
   },
   {
     path:"ContactPage",
