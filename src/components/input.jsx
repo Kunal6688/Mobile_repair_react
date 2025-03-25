@@ -1,11 +1,15 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-function Input(props) {
-    return ( 
-        <>
-            <input className="shadow-allShadow  ml-5 py-2 pl-2 pr-16 rounded-xl" type="text" placeholder={props.placeholder} />
-        </>
-     );
-}
+const Input = forwardRef(({ type, placeholder, ...rest }, ref) => {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      ref={ref} // Correctly forwarding the ref
+      className="border p-2 rounded-md w-full"
+      {...rest}
+    />
+  );
+});
 
-export default Input;
+export default Input; // Ensure you are exporting it properly

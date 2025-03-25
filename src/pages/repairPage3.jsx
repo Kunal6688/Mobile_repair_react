@@ -1,39 +1,20 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Input from "../components/input";
 
 function RepairPage3() {
-  const [formData, setFormData] = useState({
-    mobileModel: "",
-    firstName: "",
-    lastName: "",
-    city: "",
-    zipCode: "",
-    streetAddress: ""
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Check if all fields are filled
-    if (Object.values(formData).every(field => field.trim() !== "")) {
-      console.log(JSON.stringify(formData));
-      // Navigate to the next page
-      navigate("/nextPage");
-    } else {
-      alert("Please fill in all fields.");
-    }
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    // Add your form submission logic here
   };
 
   return (
@@ -45,49 +26,48 @@ function RepairPage3() {
         <p className="text-xl mt-3 mb-5">
           We'll get your device back to you in no time, and at the best price.
         </p>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
           <Input
+            type="text"
             placeholder="Mobile Model"
-            name="mobileModel"
-            value={formData.mobileModel}
-            onChange={handleChange}
-            required
+            {...register("mobileModel", { required: "Mobile Model is required" })}
           />
+          {errors.mobileModel && <p className="text-red-500">{errors.mobileModel.message}</p>}
+
           <Input
+            type="text"
             placeholder="First Name"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
+            {...register("firstName", { required: "First Name is required" })}
           />
+          {errors.firstName && <p className="text-red-500">{errors.firstName.message}</p>}
+
           <Input
+            type="text"
             placeholder="Last Name"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
+            {...register("lastName", { required: "Last Name is required" })}
           />
+          {errors.lastName && <p className="text-red-500">{errors.lastName.message}</p>}
+
           <Input
+            type="text"
             placeholder="City"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            required
+            {...register("city", { required: "City is required" })}
           />
+          {errors.city && <p className="text-red-500">{errors.city.message}</p>}
+
           <Input
-            placeholder="Zip Code"
-            name="zipCode"
-            value={formData.zipCode}
-            onChange={handleChange}
-            required
+            type="text"
+            placeholder="Pin Code"
+            {...register("zipCode", { required: "Zip Code is required" })}
           />
+          {errors.zipCode && <p className="text-red-500">{errors.zipCode.message}</p>}
+
           <Input
+            type="text"
             placeholder="Street Address"
-            name="streetAddress"
-            value={formData.streetAddress}
-            onChange={handleChange}
-            required
+            {...register("streetAddress", { required: "Street Address is required" })}
           />
+          {errors.streetAddress && <p className="text-red-500">{errors.streetAddress.message}</p>}
 
           <div className="flex flex-wrap gap-7 mt-5">
             <Link to="/RepairPage2">
